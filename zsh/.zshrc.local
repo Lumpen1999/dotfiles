@@ -1,0 +1,3 @@
+
+# node
+export PATH=$PATH:/Users/shogo/.nodebrew/current/bin
