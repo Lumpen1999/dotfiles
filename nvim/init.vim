@@ -14,8 +14,36 @@ set fileformats=unix,dos,mac
 set ambiwidth=double
 set tabstop=4
 set shiftwidth=4
-inoremap <silent> jj <ESC>
 
+let mapleader = "\<Space>"
+
+"---------------------------
+" Start vim-easymotion Settings.
+"---------------------------
+" imap <Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" " Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" " `s{char}{label}`
+" " nmap s <Plug>(easymotion-overwin-f)
+" " or
+" " `s{char}{char}{label}`
+" " Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" " Turn on case insensitive feature
+" let g:EasyMotion_smartcase = 1
+
+" " JK motions: Line motions
+" map <Leader>j <Plug>(easymotion-j)
+" map <Leader>k <Plug>(easymotion-k)
+" noremap <silent> jj <ESC>
+"
+"---------------------------
+" End vim-easymotion Settings.
+"---------------------------
+
+inoremap <silent> jj <ESC>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
@@ -24,13 +52,14 @@ inoremap " ""<LEFT>
 nnoremap bd :bd<CR>
 
 " Airline "2016/08/05
-set laststatus=2
-set showtabline=2 
-set t_Co=256
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline_theme='bubblegum'
-let g:airline_powerline_fonts = 1
+" set laststatus=2
+" set showtabline=2 
+" set t_Co=256
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" let g:airline_theme='bubblegum'
+" let g:airline_powerline_fonts = 1
+"
 
 "---------------------------
 " Start Vimtex Settings.
@@ -38,9 +67,9 @@ let g:airline_powerline_fonts = 1
 " cf. https://bombrary.github.io/blog/posts/vim-latex-setup/
 "---------------------------
 
-let g:tex_flavor = "latex"
-let maplocalleader=' '
-let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
+" let g:tex_flavor = "latex"
+" let maplocalleader=' '
+" let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
 
 "---------------------------
 " End Vimtex Settings.
@@ -101,7 +130,11 @@ if dein#load_state('~/.cache/dein')
   call dein#add('nvim-tree/nvim-web-devicons')
   call dein#add('romgrk/barbar.nvim')
   call dein#add('w0ng/vim-hybrid')
+  call dein#add('junegunn/fzf', {'build': './install --all'})
+  call dein#add('junegunn/fzf.vim')
+  call dein#add('easymotion/vim-easymotion')
 
+  " call dein#add('nathanaelkane/vim-indent-guides')
   " call dein#add('ryanoasis/vim-devicons')
   " call dein#add('vim-airline/vim-airline')
   " call dein#add('vim-airline/vim-airline-themes')
@@ -130,10 +163,18 @@ if dein#check_install()
   call dein#install()
 endif
 
+
+
 ""---------------------------
 " End dein.vim Settings.
 "---------------------------
+"
+" fzf
+nnoremap <silent> fzf :Files<CR>
+nnoremap <silent> ls :Buffers<CR>
 
+" vim-indent-guides
+" let g:indent_guides_enable_on_vim_startup = 1
 
 ""---------------------------
 " Start colorscheme Settings.
@@ -147,11 +188,10 @@ colorscheme hybrid
 "---------------------------
 
 
-""fernでアイコンを表示する
-let g:fern#renderer = 'nerdfont'
-
 "Fern Settings-------------------------
 
+""fernでアイコンを表示する
+" let g:fern#renderer = 'nerdfont'
 "" Start with fern
 ""augroup __fern__au!
 ""	autocmd VimEnter * ++nested Fern . -drawer -stay -keep -toggle -reveal=%
