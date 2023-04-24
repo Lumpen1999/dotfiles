@@ -43,7 +43,71 @@ nmap s <Plug>(easymotion-overwin-f2)
 "---------------------------
 " End vim-easymotion Settings.
 "---------------------------
+"
+"---------------------------
+" Start barbar Settings.
+"---------------------------
+"
+" noremap <silent> [b :bprevious<CR>
+" noremap <silent> ]b :bnext<CR>
+" noremap <silent> [B :bfirst<CR>
+" noremap <silent> ]B :blast<CR>
+"
+" Move to previous/next
+nnoremap <silent>    <C-j> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <C-k> <Cmd>BufferNext<CR>
+" Close buffer
+nnoremap <silent>    bd <Cmd>BufferClose<CR>
+" nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
+" nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
 
+" Re-order to previous/next
+nnoremap <silent>    <A-<> <Cmd>BufferMovePrevious<CR>
+nnoremap <silent>    <A->> <Cmd>BufferMoveNext<CR>
+
+" Goto buffer in position...
+nnoremap <silent>    <A-1> <Cmd>BufferGoto 1<CR>
+nnoremap <silent>    <A-2> <Cmd>BufferGoto 2<CR>
+nnoremap <silent>    <A-3> <Cmd>BufferGoto 3<CR>
+nnoremap <silent>    <A-4> <Cmd>BufferGoto 4<CR>
+nnoremap <silent>    <A-5> <Cmd>BufferGoto 5<CR>
+nnoremap <silent>    <A-6> <Cmd>BufferGoto 6<CR>
+nnoremap <silent>    <A-7> <Cmd>BufferGoto 7<CR>
+nnoremap <silent>    <A-8> <Cmd>BufferGoto 8<CR>
+nnoremap <silent>    <A-9> <Cmd>BufferGoto 9<CR>
+nnoremap <silent>    <A-0> <Cmd>BufferLast<CR>
+
+" Pin/unpin buffer
+nnoremap <silent>    <A-p> <Cmd>BufferPin<CR>
+
+" Restore buffer
+nnoremap <silent>    <A-s-c> <Cmd>BufferRestore<CR>
+
+" Wipeout buffer
+"                          :BufferWipeout
+" Close commands
+"                          :BufferCloseAllButCurrent
+"                          :BufferCloseAllButVisible
+"                          :BufferCloseAllButPinned
+"                          :BufferCloseAllButCurrentOrPinned
+"                          :BufferCloseBuffersLeft
+"                          :BufferCloseBuffersRight
+
+" Magic buffer-picking mode
+nnoremap <silent> <C-p>    <Cmd>BufferPick<CR>
+nnoremap <silent> <C-p>    <Cmd>BufferPickDelete<CR>
+
+" Sort automatically by...
+nnoremap <silent> <Space>bb <Cmd>BufferOrderByBufferNumber<CR>
+nnoremap <silent> <Space>bd <Cmd>BufferOrderByDirectory<CR>
+nnoremap <silent> <Space>bl <Cmd>BufferOrderByLanguage<CR>
+nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
+"
+"---------------------------
+" End barbar Settings.
+"---------------------------
+"
+"
 "---------------------------
 " Start terminal mode Settings.
 "---------------------------
@@ -52,6 +116,9 @@ nnoremap <silent> tt <cmd>terminal<CR>
 autocmd TermOpen * startinsert
 autocmd TermOpen * setlocal norelativenumber
 autocmd TermOpen * setlocal nonumber
+"---------------------------
+" End terminal mode Settings.
+"---------------------------
 
 inoremap <silent> jj <ESC>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
@@ -59,7 +126,7 @@ inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap ' ''<LEFT>
 inoremap " ""<LEFT>
-nnoremap bd :bd<CR>
+" nnoremap bd :bd<CR>
 
 set laststatus=3
 set showtabline=2 
