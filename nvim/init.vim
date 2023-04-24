@@ -51,15 +51,15 @@ inoremap ' ''<LEFT>
 inoremap " ""<LEFT>
 nnoremap bd :bd<CR>
 
-" Airline "
- set laststatus=0
- set showtabline=2 
- set t_Co=256
- let g:airline#extensions#tabline#enabled = 1
- let g:airline#extensions#tabline#buffer_idx_mode = 1
- let g:airline_theme='bubblegum'
- let g:airline_powerline_fonts = 1
+set laststatus=3
+set showtabline=2 
+set t_Co=256
 
+" Airline "
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" let g:airline_theme='bubblegum'
+" let g:airline_powerline_fonts = 1
 
 "---------------------------
 " Start Vimtex Settings.
@@ -73,7 +73,21 @@ nnoremap bd :bd<CR>
 
 "---------------------------
 " End Vimtex Settings.
+"
 "---------------------------
+" Start statusline Settings
+"---------------------------
+hi User1 guifg=#FFFFFF guibg=#000000
+hi User2 guifg=#ffffff guibg=#333333
+
+" ブランチ名
+set statusline=%9*\ \ %2*%{matchstr(fugitive#statusline(),'(\zs.*\ze)')}
+" ファイル名
+set statusline+=%1*\ %{expand('%')}
+" ここから右寄せ
+set statusline+=%=
+" 現在行 / 全体行 ファイル種別
+set statusline+=%l/%L\ \%y
 
 "---------------------------
 " Start Pratical Vim
@@ -127,21 +141,23 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-commentary')
   call dein#add('tpope/vim-fugitive')
-  call dein#add('nvim-tree/nvim-web-devicons')
-  call dein#add('romgrk/barbar.nvim')
   call dein#add('w0ng/vim-hybrid')
   call dein#add('junegunn/fzf', {'build': './install --all'})
   call dein#add('junegunn/fzf.vim')
   call dein#add('easymotion/vim-easymotion')
+  call dein#add('nvim-tree/nvim-web-devicons')
+  call dein#add('romgrk/barbar.nvim')
+  call dein#add('ghifarit53/tokyonight-vim')
 
+  " call dein#add('nvim-lualine/lualine.nvim')
   " call dein#add('nathanaelkane/vim-indent-guides')
   " call dein#add('ryanoasis/vim-devicons')
   " call dein#add('vim-airline/vim-airline')
   " call dein#add('vim-airline/vim-airline-themes')
-  " call dein#add('lambdalisue/fern.vim')
   " call dein#add('lambdalisue/nerdfont.vim')
   " call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
   " call dein#add('lambdalisue/fern-git-status.vim')
+  " call dein#add('lambdalisue/fern.vim')
   " call dein#add('lervag/vimtex')
   " call dein#add('cocopon/iceberg.vim')
   " call dein#add('Shougo/neosnippet.vim')
@@ -180,8 +196,13 @@ nnoremap <silent> ls :Buffers<CR>
 " Start colorscheme Settings.
 "---------------------------
 " syntax on
+set termguicolors
 " colorscheme iceberg
-colorscheme hybrid
+" colorscheme hybrid
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+
+colorscheme tokyonight
 
 ""---------------------------
 " End colorscheme Settings.
@@ -191,7 +212,7 @@ colorscheme hybrid
 "Fern Settings-------------------------
 
 ""fernでアイコンを表示する
-" let g:fern#renderer = 'nerdfont'
+let g:fern#renderer = 'nerdfont'
 "" Start with fern
 ""augroup __fern__au!
 ""	autocmd VimEnter * ++nested Fern . -drawer -stay -keep -toggle -reveal=%
