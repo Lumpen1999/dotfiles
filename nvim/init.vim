@@ -14,6 +14,7 @@ set fileformats=unix,dos,mac
 set ambiwidth=double
 set tabstop=4
 set shiftwidth=4
+set clipboard=unnamed
 
 let mapleader = "\<Space>"
 
@@ -42,6 +43,15 @@ nmap s <Plug>(easymotion-overwin-f2)
 "---------------------------
 " End vim-easymotion Settings.
 "---------------------------
+
+"---------------------------
+" Start terminal mode Settings.
+"---------------------------
+nnoremap <silent> tt <cmd>terminal<CR>
+:tnoremap <Esc> <C-\><C-n>
+autocmd TermOpen * startinsert
+autocmd TermOpen * setlocal norelativenumber
+autocmd TermOpen * setlocal nonumber
 
 inoremap <silent> jj <ESC>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>

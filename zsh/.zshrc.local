@@ -1,3 +1,4 @@
 
 # node
 export PATH=$PATH:/Users/shogo/.nodebrew/current/bin
+export PATH=$PATH:/Users/shogo/venv/bin:/Users/shogo/.pyenv/shims
