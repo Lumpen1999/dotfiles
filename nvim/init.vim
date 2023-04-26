@@ -18,6 +18,7 @@ set clipboard=unnamed
 
 let mapleader = "\<Space>"
 
+
 "---------------------------
 " Start vim-easymotion Settings.
 "---------------------------
@@ -44,6 +45,12 @@ nmap s <Plug>(easymotion-overwin-f2)
 " End vim-easymotion Settings.
 "---------------------------
 "
+" jupytext
+"" セルの区切り文字をVSCode互換の # %% に指定する
+" let g:jupytext_fmt = 'py:percent'
+" vimのPython向けシンタックスハイライトを有効にする
+" let g:jupytext_filetype_map = {'py': 'python'}
+
 "---------------------------
 " Start barbar Settings.
 "---------------------------
@@ -218,7 +225,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-commentary')
   call dein#add('tpope/vim-fugitive')
-  call dein#add('w0ng/vim-hybrid')
   call dein#add('junegunn/fzf', {'build': './install --all'})
   call dein#add('junegunn/fzf.vim')
   call dein#add('easymotion/vim-easymotion')
@@ -226,6 +232,9 @@ if dein#load_state('~/.cache/dein')
   call dein#add('romgrk/barbar.nvim')
   call dein#add('ghifarit53/tokyonight-vim')
 
+  " call dein#add('goerz/jupytext.vim')
+  " call dein#add('jupyter-vim/jupyter-vim')
+  " call dein#add('w0ng/vim-hybrid')
   " call dein#add('nvim-lualine/lualine.nvim')
   " call dein#add('nathanaelkane/vim-indent-guides')
   " call dein#add('ryanoasis/vim-devicons')
@@ -255,13 +264,10 @@ filetype plugin on
 if dein#check_install()
   call dein#install()
 endif
-
-
-
 ""---------------------------
 " End dein.vim Settings.
 "---------------------------
-"
+
 " fzf
 nnoremap <silent> fzf :Files<CR>
 nnoremap <silent> ls :Buffers<CR>
