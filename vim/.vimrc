@@ -1,4 +1,4 @@
-set history=200
+set history=100
 set number
 set background=dark
 set visualbell t_vb=
@@ -79,7 +79,6 @@ if dein#load_state('~/.cache/dein')
   " Required:
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-
   " Add or remove your plugins here like this:
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
@@ -97,6 +96,13 @@ if dein#load_state('~/.cache/dein')
   call dein#add('cocopon/iceberg.vim')
   call dein#add('lervag/vimtex')
 
+  " LoadTomlFile:
+  let s:dein_dir = expand($HOME . '/.vim/dein')
+  let s:toml      = s:dein_dir. '/dein.toml'
+  let s:lazy_toml = s:dein_dir . '/dein_lazy.toml'
+
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
   
   " Required:
   call dein#end()
@@ -107,15 +113,16 @@ endif
 filetype plugin indent on
 syntax enable
 filetype plugin on
-" colorscheme hybrid 
-colorscheme iceberg 
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
   call dein#install()
 endif
-
 "End dein Scripts-------------------------
+"
+" colorscheme hybrid 
+colorscheme iceberg 
+
 
 ""fernでアイコンを表示する
 let g:fern#renderer = 'nerdfont'

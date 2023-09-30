@@ -6,10 +6,15 @@ nvim:
 	if [ ! -d ${HOME}/.config/nvim ]; then mkdir -p ${HOME}/.config/nvim; fi
 	ln -s -f ${PWD}/nvim/coc-config.json ${HOME}/.config/nvim/coc-settings.json
 	mkdir -p ${HOME}/.config/nvim/colors
+
+.PHONY:vim
+vim:
+	sh vim/install-dein.sh
+	if [ ! -e ${HOME}/.vimrc ]; then ln -sf ${PWD}/vim/.vimrc ${HOME}/.vimrc; fi
+	if [ ! -e ${HOME}/.vim ]; then cp -r ${PWD}/vim/.vim ${HOME}/.vim; fi
 	
 PHONY: zsh-conf
 zsh-conf:
-	ln -sf ${PWD}/zsh/zsh_scripts ${HOME}/zsh_scripts
 	ln -sf ${PWD}/zsh/.zshenv ${HOME}/.zshenv
 	ln -sf ${PWD}/zsh/.zshrc ${HOME}/.zshrc
 	ln -sf ${PWD}/zsh/.zprofile ${HOME}/.zprofile
@@ -33,7 +38,3 @@ conf: zsh_conf zsh-plugin
 
 .PHONY: all
 all: pre nvim zsh 
-
-# alacritty tmux_conf startship_conf
-# starship starship_conf brew alacritty tmux_conf lang 
-# mkdir -p ${HOME}/.zsh
