@@ -1,11 +1,17 @@
 SHELL=/bin/zsh
 
-.PHONY: nvim
-nvim:
+.PHONY: nvim-archive
+nvim-archive:
 	sh nvim/install-dein.sh
 	if [ ! -d ${HOME}/.config/nvim ]; then mkdir -p ${HOME}/.config/nvim; fi
 	ln -s -f ${PWD}/nvim/coc-config.json ${HOME}/.config/nvim/coc-settings.json
 	mkdir -p ${HOME}/.config/nvim/colors
+
+.PHONY: nvim
+nvim:
+	if [ ! -d ${HOME}/.config/nvim ]; then mkdir -p ${HOME}/.config/nvim; fi
+	mv ${HOME}/.config/nvim{,.bak} 
+	ln -sf ${PWD}/nvim ${HOME}/.config/nvim
 
 .PHONY:vim
 vim:
