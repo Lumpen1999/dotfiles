@@ -56,13 +56,11 @@ alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/user/sbin:/sbin b
 # ref. https://webrandum.net/zsh-prompt-name/
 PROMPT='%F{37}%# %~ > %f'
 
-# macbook defalut PATH
-# /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # load personal settings 
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
