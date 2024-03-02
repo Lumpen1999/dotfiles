@@ -51,7 +51,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 alias vim='nvim'
 
 # ref. https://webrandum.net/zsh-prompt-name/
-PROMPT='%F{37}%# %~ > %f'
+PROMPT='%F{37}%# %m %~ > %f'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
