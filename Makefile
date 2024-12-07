@@ -21,12 +21,24 @@ vim:
 	
 PHONY: zsh-conf
 zsh-conf:
-	ln -sf ${PWD}/zsh/.zshenv ${HOME}/.zshenv
-	ln -sf ${PWD}/zsh/.zshrc ${HOME}/.zshrc
-	ln -sf ${PWD}/zsh/.zprofile ${HOME}/.zprofile
+
+# Back up
+	if [ -e ${HOME}/.zshenv ]; then cp ${HOME}/.zshenv ${HOME}/.zshenv.backup; fi
+	if [ -e ${HOME}/.zshrc ]; then cp ${HOME}/.zshrc ${HOME}/.zshrc.backup; fi
+	if [ -e ${HOME}/.zprofile ]; then cp ${HOME}/.zprofile ${HOME}/.zprofile.backup; fi
+	if [ -e ${HOME}/.zshenv.local ]; then cp ${HOME}/.zshenv.local ${HOME}/.zshenv.local.backup; fi
+	if [ -e ${HOME}/.zshrc.local ]; then cp ${HOME}/.zshrc.local ${HOME}/.zshrc.local.backup; fi
+	if [ -e ${HOME}/.zprofile.local ]; then cp ${HOME}/.zprofile.local ${HOME}/.zprofile.local.backup; fi
+
+ # Create .local if not exists
 	if [ ! -e ${HOME}/.zshenv.local ]; then cp ${PWD}/zsh/.zshenv.local ${HOME}/.zshenv.local; fi
 	if [ ! -e ${HOME}/.zshrc.local ]; then cp ${PWD}/zsh/.zshrc.local ${HOME}/.zshrc.local; fi
 	if [ ! -e ${HOME}/.zprofile.local ]; then cp ${PWD}/zsh/.zprofile.local ${HOME}/.zprofile.local; fi
+
+	ln -sf ${PWD}/zsh/.zshenv ${HOME}/.zshenv
+	ln -sf ${PWD}/zsh/.zshrc ${HOME}/.zshrc
+	ln -sf ${PWD}/zsh/.zprofile ${HOME}/.zprofile
+
 
 .PHONY: zsh-plugin
 zsh-plugin: 
